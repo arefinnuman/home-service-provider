@@ -1,6 +1,6 @@
 import { IsString } from 'class-validator';
 import { Category } from 'src/enum/category.enum';
-export class CreateServiceDto {
+export class UpdateServiceDto {
   @IsString()
   serviceName: string;
 

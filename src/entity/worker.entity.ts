@@ -1,12 +1,23 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
+import { Service } from './service.entity';
 
 @Entity()
-export class WorkerEntity extends BaseEntity {
+@Unique(['userName'])
+export class Worker {
   @PrimaryGeneratedColumn()
-  id: number;
+  workerId: number;
 
   @Column()
   userName: string;
+
+  @Column({ nullable: true })
+  photo: string;
 
   @Column()
   password: string;
@@ -29,6 +40,7 @@ export class WorkerEntity extends BaseEntity {
   @Column()
   city: string;
 
-  // @Column()
-  // workerService: Category;
+  // Worker has many services
+  @OneToMany(() => Service, (service) => service.worker)
+  services: Service[];
 }

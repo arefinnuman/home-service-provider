@@ -1,9 +1,9 @@
 import { IsNotEmpty } from 'class-validator';
-export class CreateWokerDto {
+export class UpdateWorkerDto {
   @IsNotEmpty()
   userName: string;
 
-  // photo: string;
+  photo: string;
 
   @IsNotEmpty()
   password: string;
